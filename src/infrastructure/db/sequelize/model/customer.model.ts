@@ -1,9 +1,6 @@
 import { Column, Model, PrimaryKey, Table } from "sequelize-typescript";
 
-@Table({
-  tableName: "customers",
-  timestamps: false,
-})
+@Table({ tableName: "customers", timestamps: false })
 export default class CustomerModel extends Model {
   @PrimaryKey
   @Column
