@@ -1,11 +1,10 @@
-import Address from "../../domain/entity/address";
-import Customer from "../../domain/entity/customer";
-import customer from "../../domain/entity/customer";
-import CustomerRepositoryInterface from "../../domain/repository/customer-repository-interface";
+import Address from "../../domain/customer/value-object/address";
+import Customer from "../../domain/customer/entity/customer";
+import CustomerRepositoryInterface from "../../domain/customer/repository/customer-repository-interface";
 import CustomerModel from "../db/sequelize/model/customer.model";
 
 export default class CustomerRepository implements CustomerRepositoryInterface {
-  async create(entity: customer): Promise<void> {
+  async create(entity: Customer): Promise<void> {
     await CustomerModel.create({
       id: entity.id,
       name: entity.name,
@@ -18,7 +17,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
     });
   }
 
-  async update(entity: customer): Promise<void> {
+  async update(entity: Customer): Promise<void> {
     await CustomerModel.update(
       {
         name: entity.name,
@@ -37,7 +36,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
     );
   }
 
-  async find(id: string): Promise<customer> {
+  async find(id: string): Promise<Customer> {
     let customerModel;
 
     try {
@@ -52,7 +51,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
     return this.mapCustomer(customerModel);
   }
 
-  async findAll(): Promise<customer[]> {
+  async findAll(): Promise<Customer[]> {
     const customerModels = await CustomerModel.findAll();
     return customerModels.map((customerModel) =>
       this.mapCustomer(customerModel)
