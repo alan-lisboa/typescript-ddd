@@ -7,7 +7,7 @@ import {
   Table,
 } from "sequelize-typescript";
 import OrderModel from "./order.model";
-import ProductModel from "./product.model";
+import ProductModel from "../../../product/sequelize/model/product.model";
 
 @Table({ tableName: "order_items", timestamps: false })
 export default class OrderItemModel extends Model {
