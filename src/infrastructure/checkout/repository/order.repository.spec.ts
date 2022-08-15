@@ -38,7 +38,8 @@ describe("Order repository test", () => {
   it("Should create a new order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("1", "Customer 1");
-    customer.address = new Address("Street 1", 1, "Zip 1", "City 1");
+    const address = new Address("Street 1", 1, "Zip 1", "City 1");
+    customer.changeAddress(address);
 
     await customerRepository.create(customer);
 
@@ -85,7 +86,8 @@ describe("Order repository test", () => {
   it("Should find a order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("1", "Customer 1");
-    customer.address = new Address("Street 1", 1, "Zip 1", "City 1");
+    const address = new Address("Street 1", 1, "Zip 1", "City 1");
+    customer.changeAddress(address);
 
     await customerRepository.create(customer);
 
@@ -123,7 +125,8 @@ describe("Order repository test", () => {
   it("Should insert a new item in a existing order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("1", "Customer 1");
-    customer.address = new Address("Street 1", 1, "Zip 1", "City 1");
+    const address = new Address("Street 1", 1, "Zip 1", "City 1");
+    customer.changeAddress(address);
 
     await customerRepository.create(customer);
 
@@ -193,7 +196,8 @@ describe("Order repository test", () => {
 
   it("Should exclude a item in a existing order", async () => {
     const customer = new Customer("1", "Customer 1");
-    customer.address = new Address("Street 1", 1, "Zip 1", "City 1");
+    const address = new Address("Street 1", 1, "Zip 1", "City 1");
+    customer.changeAddress(address);
 
     const customerRepository = new CustomerRepository();
     await customerRepository.create(customer);
@@ -238,7 +242,8 @@ describe("Order repository test", () => {
   it("Should find all orders", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("1", "Customer 1");
-    customer.address = new Address("Street 1", 1, "Zip 1", "City 1");
+    const address = new Address("Street 1", 1, "Zip 1", "City 1");
+    customer.changeAddress(address);
 
     await customerRepository.create(customer);
 

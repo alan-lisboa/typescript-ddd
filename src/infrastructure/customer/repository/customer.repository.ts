@@ -61,13 +61,14 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
   private mapCustomer(customerModel: CustomerModel): Customer {
     const customer = new Customer(customerModel.id, customerModel.name);
 
-    customer.address = new Address(
+    const address = new Address(
       customerModel.street,
       customerModel.number,
       customerModel.zip,
       customerModel.city
     );
 
+    customer.changeAddress(address);
     customer.addRewardPoints(customerModel.rewardPoints);
 
     if (customerModel.active) {
